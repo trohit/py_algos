@@ -2,7 +2,6 @@
 import random
 
 def heapify(a, n, i):
-  n = len(a)
   l = 2*i+1
   r = 2*i+2
   maxi = i
@@ -26,4 +25,3 @@ a = [4, 3, 7, 2, 9, 1, 8]
 print(f"u:{a}")
 heapsort(a)
 print(f"s:{a}")
-
