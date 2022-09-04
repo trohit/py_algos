@@ -38,24 +38,20 @@ class Solution:
 		return nums
     
 	# @quickSort
-    def quickSort(self, nums):
-        def helper(head, tail):
-            if head >= tail: return 
-            l, r = head, tail
-            m = (r - l) // 2 + l
-            pivot = nums[m]
-            while r >= l:
-                while r >= l and nums[l] < pivot: l += 1
-                while r >= l and nums[r] > pivot: r -= 1
-                if r >= l:
-                    nums[l], nums[r] = nums[r], nums[l]
-                    l += 1
-                    r -= 1
-            helper(head, r)
-            helper(l, tail)
-
-        helper(0, len(nums)-1)
-        return nums
+	# https://www.educative.io/answers/how-to-implement-quicksort-in-python
+    def quickSort(self, a):
+        n = len(a)
+        if n < 2: return a
+        lwi = 0 # left wall index that tracks all elm < pivot
+        for i in range(1, n): # partition the arr on pivot a[0]
+            if a[i] <= a[0]:  # by looking for elms < pivot
+                lwi += 1      
+                a[i], a[lwi] = a[lwi], a[i] # swap a[lwi] <> a[i]
+        a[0], a[lwi] = a[lwi], a[0]
+        l = self.quickSort(a[:lwi]) # Sorts the n to the left of pivot
+        r = self.quickSort(a[lwi+1:]) # Sorts the n to the right of pivot
+        a = l + [a[lwi]] + r # Merges everything together
+        return a
      
 	# @mergeSort
     def mergeSort(self, nums): 
