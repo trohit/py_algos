@@ -1,4 +1,19 @@
 #!/usr/bin/env python
+
+import random
+# the simplest quicksort that one can use in interview + passes leetcode
+# siplifies the partitioning and uses and O(n) extra space on avg but O(n^2) in worst case 
+def q(a):
+    n = len(a)
+    if n <= 1: return a
+    pivot = random.choice(a)
+    l = [v for v in a if v <= pivot]
+    m = [v for v in a if v == pivot]
+    r = [v for v in a if v > pivot]
+    a = q(l) + m + q(r)
+    return a
+
+# uses lomuto - more swaps than hoare
 def qs(a):
     n = len(a)
     if n < 2: return a
