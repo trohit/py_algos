@@ -2,7 +2,7 @@
 import random
 def mergesort(a):
     n = len(a)
-    if n <= 1: return
+    if n <= 1: return a
     i = j = k = 0
     m = n // 2
     l,r = a[:m], a[m:]
