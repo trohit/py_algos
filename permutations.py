@@ -12,6 +12,16 @@ def perms_recursive(a:list, lo, hi):
         perms_recursive(a, lo+1, hi)
         a[i], a[lo] = a[lo], a[i]
 
+# uses backtracking
+def perms_bt(a, i, res):
+    n = len(a)
+    # base case / leaf node
+    if i == n:
+        res.append(copy(a))
+        return
+    # inter
+    perms_bt(a, i+1, res)
+    
 def perm(s):
     a = list(s)
     # swap 1st char with all remaining elems in arr
