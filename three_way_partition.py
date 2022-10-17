@@ -2,8 +2,9 @@ class Solution:
     def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
         # dutch national flag 3 way partition
         # O(n)
-        # 0.....i.....j.........k....n
-        #  <mid   mid  unsorted  >mid
+        #       lo_end mid_end    hi_st
+        # 0.......i.......j.........k.....n
+        #    <mid    mid    unsorted  >mid
         a = nums # just an alias
         n = len(nums)
         i,j,k = 0,0,n-1 # before index, holds the max elm just before pivot
